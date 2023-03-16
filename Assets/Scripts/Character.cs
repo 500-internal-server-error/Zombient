@@ -22,8 +22,10 @@ public class Character : MonoBehaviour {
 	[Header("Components")]
 
 	public CharacterController controller;
+
 	[SerializeField]
 	private HealthBarUI healthBarPrefab;
+
 	protected Character target;
 
 	[HideInInspector]

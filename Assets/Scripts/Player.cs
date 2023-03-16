@@ -5,7 +5,9 @@ public class Player : Character {
 	private Animator anim;
 	private float lastAttackTime;
 
-	private void Start() {
+	protected override void Start() {
+		base.Start();
+
 		if (current == null) {
 			current = this;
 			anim = GetComponentInChildren<Animator>();
@@ -37,6 +39,7 @@ public class Player : Character {
 
 	protected override void Die() {
 		base.Die();
+		controller.StopMovement();
 		anim.SetBool("isDead", true);
 	}
 }

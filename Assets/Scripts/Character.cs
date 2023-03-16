@@ -2,10 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Character : MonoBehaviour {
+
 	[Header("Stats")]
 
-	private int currentHP;
-	private int maxHp;
+	public int maxHp;
+
+	[HideInInspector]
+	public int currentHP;
+
+	[SerializeField]
 	private int damage;
 
 	[SerializeField]
@@ -17,14 +22,20 @@ public class Character : MonoBehaviour {
 	[Header("Components")]
 
 	public CharacterController controller;
-	private GameObject healthBarPrefab;
+	[SerializeField]
+	private HealthBarUI healthBarPrefab;
 	protected Character target;
 
 	[HideInInspector]
 	public bool isDead;
 
-	private event UnityAction onTakeDamage;
-	private event UnityAction onDie;
+	public event UnityAction onTakeDamage;
+	public event UnityAction onDie;
+
+	protected virtual void Start() {
+		currentHP = maxHp;
+		Instantiate(healthBarPrefab, transform.position + healthBarPrefab.transform.position, Quaternion.identity, transform);
+	}
 
 	public virtual void SetTarget(Character t) {
 		target = t;
@@ -36,7 +47,7 @@ public class Character : MonoBehaviour {
 		if (currentHP <= 0) Die();
 	}
 
-	protected virtual void AttackTarget() {
+	public virtual void AttackTarget() {
 		target?.TakeDamage(damage);
 	}
 

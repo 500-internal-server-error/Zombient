@@ -12,6 +12,15 @@ public class CharacterController : MonoBehaviour {
 	private float lastMoveToUpdateTime;
 	private Transform moveTarget;
 
+	private void Update() {
+		if (moveTarget != null && Time.time - lastMoveToUpdateTime > moveToUpdateRate) {
+			lastMoveToUpdateTime = Time.time;
+			MoveToPosition(moveTarget.position);
+		}
+
+		isMoving = agent.velocity.magnitude > 0.1f;
+	}
+
 	public void MoveToTarget(Transform target) {
 		moveTarget = target;
 	}
@@ -28,14 +37,5 @@ public class CharacterController : MonoBehaviour {
 	public void StopMovement() {
 		agent.isStopped = true;
 		moveTarget = null;
-	}
-
-	private void Update() {
-		if (moveTarget != null && Time.time - lastMoveToUpdateTime > moveToUpdateRate) {
-			lastMoveToUpdateTime = Time.time;
-			MoveToPosition(moveTarget.position);
-		}
-
-		isMoving = agent.velocity.magnitude > 0.1f;
 	}
 }

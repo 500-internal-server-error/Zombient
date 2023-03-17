@@ -14,7 +14,7 @@ public class ClickController : MonoBehaviour {
 			return;
 		}
 
-		nav.gameObject.SetActive(Player.current.controller.isMoving && !Player.current.isDead);
+		nav.SetActive(Player.current.controller.isMoving && !Player.current.isDead);
 		if (Player.current.isDead) return;
 		if (Mouse.current.rightButton.wasPressedThisFrame) Click();
 	}

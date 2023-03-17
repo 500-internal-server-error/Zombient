@@ -23,8 +23,12 @@ public class Enemy : Character {
 	}
 
 	private void Update() {
-		SetTarget(Player.current);
-		if (target == null || target.isDead) return;
+		SetTarget(isDead ? null : Player.current);
+		if (target == null || target.isDead) {
+			SetState(State.Idle);
+			anim.SetBool("isMoving", false);
+			return;
+		}
 
 		targetDistance = Vector3.Distance(transform.position, target.transform.position);
 

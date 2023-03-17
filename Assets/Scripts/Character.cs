@@ -55,6 +55,7 @@ public class Character : MonoBehaviour {
 
 	protected virtual void Die() {
 		isDead = true;
+		target = null;
 		onDie?.Invoke();
 		Destroy(gameObject, 3.0f);
 	}

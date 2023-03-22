@@ -22,7 +22,11 @@ public class Enemy : Character {
 		anim = GetComponentInChildren<Animator>();
 	}
 
-	private void Update() {
+	protected override void Update() {
+		base.Update();
+
+		if (!gameObject.activeInHierarchy) return;
+
 		SetTarget(isDead ? null : Player.current);
 		if (target == null || target.isDead) {
 			SetState(State.Idle);
@@ -43,7 +47,6 @@ public class Enemy : Character {
 
 	protected override void Die() {
 		base.Die();
-		controller.StopMovement();
 		anim.SetBool("isDead", true);
 	}
 

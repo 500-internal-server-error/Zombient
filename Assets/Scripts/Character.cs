@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Character : MonoBehaviour {
+public class Character : SelfDestructableGameObject {
 
 	[Header("Stats")]
 
@@ -57,6 +57,11 @@ public class Character : MonoBehaviour {
 		isDead = true;
 		target = null;
 		onDie?.Invoke();
-		Destroy(gameObject, 3.0f);
+		controller.StopMovement();
+		GameObjectPool.instance.Destroy(this, 3.0f);
+	}
+
+	protected override void OnSelfDestruct() {
+		gameObject.SetActive(false);
 	}
 }

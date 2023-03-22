@@ -19,7 +19,7 @@ public class HealthBarUI : MonoBehaviour {
 		character.onTakeDamage += UpdateHealthBar;
 		character.onDie += HideHealthBar;
 
-		healthFill.color = transform.root.tag switch {
+		healthFill.color = transform.parent.tag switch {
 			"Player" => playerHealthColor,
 			"Enemy" => enemyHealthColor,
 

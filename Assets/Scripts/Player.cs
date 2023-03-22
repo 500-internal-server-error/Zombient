@@ -19,7 +19,9 @@ public class Player : Character {
 		}
 	}
 
-	private void Update() {
+	protected override void Update() {
+		base.Update();
+
 		if (target != null && !target.isDead) {
 			float targetDistance = Vector3.Distance(transform.position, target.transform.position);
 			if (targetDistance < attackRange) {
@@ -39,7 +41,6 @@ public class Player : Character {
 
 	protected override void Die() {
 		base.Die();
-		controller.StopMovement();
 		anim.SetBool("isDead", true);
 	}
 }

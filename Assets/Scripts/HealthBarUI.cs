@@ -13,9 +13,10 @@ public class HealthBarUI : MonoBehaviour {
 
 	private Character character;
 
-	private void Start() {
+	private void OnEnable() {
 		character = GetComponentInParent<Character>();
 
+		character.onSpawn += ShowHealthBar;
 		character.onTakeDamage += UpdateHealthBar;
 		character.onDie += HideHealthBar;
 
@@ -31,6 +32,10 @@ public class HealthBarUI : MonoBehaviour {
 
 	private void Update() {
 		transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
+	}
+
+	private void ShowHealthBar() {
+		gameObject.SetActive(true);
 	}
 
 	private void UpdateHealthBar() {

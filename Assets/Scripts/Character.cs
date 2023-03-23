@@ -26,17 +26,28 @@ public class Character : SelfDestructableGameObject {
 	[SerializeField]
 	private HealthBarUI healthBarPrefab;
 
+	private HealthBarUI healthbar;
+
 	protected Character target;
 
 	[HideInInspector]
 	public bool isDead;
 
+	public event UnityAction onSpawn;
 	public event UnityAction onTakeDamage;
 	public event UnityAction onDie;
 
-	protected virtual void Start() {
+	protected override void OnEnable() {
+		base.OnEnable();
+
 		currentHP = maxHp;
-		Instantiate(healthBarPrefab, transform.position + healthBarPrefab.transform.position, Quaternion.identity, transform);
+		isDead = false;
+
+		if (healthbar == null) {
+			healthbar = Instantiate(healthBarPrefab, transform.position + healthBarPrefab.transform.position, Quaternion.identity, transform);
+		}
+
+		onSpawn?.Invoke();
 	}
 
 	public virtual void SetTarget(Character t) {

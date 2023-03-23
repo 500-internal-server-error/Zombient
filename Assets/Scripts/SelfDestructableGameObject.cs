@@ -1,8 +1,13 @@
 using UnityEngine;
 
 public abstract class SelfDestructableGameObject : MonoBehaviour {
-	private float selfDestructTimer = 0;
-	private bool selfDestructTimerActive = false;
+	private float selfDestructTimer;
+	private bool selfDestructTimerActive;
+
+	protected virtual void OnEnable() {
+		selfDestructTimer = 0;
+		selfDestructTimerActive = false;
+	}
 
 	protected virtual void Update() {
 		if (selfDestructTimerActive) {

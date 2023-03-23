@@ -5,8 +5,8 @@ public class Player : Character {
 	private Animator anim;
 	private float lastAttackTime;
 
-	protected override void Start() {
-		base.Start();
+	protected override void OnEnable() {
+		base.OnEnable();
 
 		if (current == null) {
 			current = this;

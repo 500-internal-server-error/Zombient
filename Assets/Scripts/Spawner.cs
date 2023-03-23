@@ -20,7 +20,6 @@ public class Spawner : MonoBehaviour {
 		spawnTimer -= Time.deltaTime;
 
 		if (spawnTimer <= 0) {
-			Debug.Log(GameObjectPool.instance.CountActive(spawnedObjectPrefab));
 			if (GameObjectPool.instance.CountActive(spawnedObjectPrefab) < maxSpawnedObjects) {
 				GameObjectPool.instance.Instantiate(
 					spawnedObjectPrefab,

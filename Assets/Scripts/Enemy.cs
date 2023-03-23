@@ -17,9 +17,13 @@ public class Enemy : Character {
 	[SerializeField]
 	private float chaseRange;
 
-	protected override void Start() {
-		base.Start();
+	protected override void OnEnable() {
+		base.OnEnable();
+
 		anim = GetComponentInChildren<Animator>();
+
+		SetTarget(Player.current);
+		anim.SetBool("isDead", false);
 	}
 
 	protected override void Update() {

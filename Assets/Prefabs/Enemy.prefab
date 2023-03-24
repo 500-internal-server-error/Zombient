@@ -53,6 +53,7 @@ MonoBehaviour:
   damage: 3
   attackRange: 1.25
   attackRate: 0.05
+  hitParticleSystemPrefab: {fileID: 5751510998072342100, guid: ec53c52645f8e4c4ab0fc73463c98883, type: 3}
   controller: {fileID: 2067661917845596954}
   healthBarPrefab: {fileID: 7523381507262354025, guid: b872924781fedc74299e6df86caace0f, type: 3}
   isDead: 0

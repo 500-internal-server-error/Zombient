@@ -19,6 +19,9 @@ public class Character : SelfDestructableGameObject {
 	[SerializeField]
 	protected float attackRate;
 
+	[SerializeField]
+	private GameObject hitParticleSystemPrefab;
+
 	[Header("Components")]
 
 	public CharacterController controller;
@@ -56,6 +59,7 @@ public class Character : SelfDestructableGameObject {
 
 	protected virtual void TakeDamage(int value) {
 		currentHP -= value;
+		Instantiate(hitParticleSystemPrefab, transform.position, Quaternion.identity, transform);
 		onTakeDamage?.Invoke();
 		if (currentHP <= 0) Die();
 	}

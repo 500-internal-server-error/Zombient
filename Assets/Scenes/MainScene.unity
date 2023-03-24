@@ -445,7 +445,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374169897}
-  m_LocalRotation: {x: 0.17901221, y: -0.19282041, z: 0.035802435, w: 0.96410227}
+  m_LocalRotation: {x: 0.17901222, y: -0.19282044, z: 0.035802446, w: 0.96410227}
   m_LocalPosition: {x: 5, y: 7, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1204,7 +1204,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.17901221, y: -0.19282041, z: 0.035802435, w: 0.96410227}
+  m_LocalRotation: {x: 0.17901222, y: -0.19282044, z: 0.035802446, w: 0.96410227}
   m_LocalPosition: {x: 5, y: 7, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1431,6 +1431,7 @@ MonoBehaviour:
   damage: 3
   attackRange: 2
   attackRate: 0.5
+  hitParticleSystemPrefab: {fileID: 5751510998072342100, guid: cbc3b5c733ce7f243bbfa308a0fee65f, type: 3}
   controller: {fileID: 1597832721}
   healthBarPrefab: {fileID: 7523381507262354025, guid: b872924781fedc74299e6df86caace0f, type: 3}
   isDead: 0
